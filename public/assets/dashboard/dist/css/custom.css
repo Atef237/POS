@@ -1,0 +1,107 @@
+*{
+    direction: rtl !important;
+}
+.layout-fixed .main-sidebar {
+    right: 0;
+}
+.brand-image {
+    float: right;
+}
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 0px;
+    margin-right: 250px;
+}
+.mr-auto-navbav{
+    margin-right: auto!important;
+}
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+[class*=icheck-]>input:first-child:checked+input[type=hidden]+label::after,
+[class*=icheck-]>input:first-child:checked+label::after {
+    right: 15px;
+    left: auto;
+}
+.nav-sidebar .nav-link>.right,
+.nav-sidebar .nav-link>p>.right {
+    left: 1rem;
+    right: auto;
+}
+.nav-sidebar .nav-link>.right:nth-child(2),
+.nav-sidebar .nav-link>p>.right:nth-child(2) {
+    left: 2.2rem;
+    right: auto;
+}
+.small-box .icon>i {
+    left: 15px;
+    right: auto;
+}
+@media (min-width: 992px){
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+    }
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+        margin-left: 0!important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-sidebar, .main-sidebar::before {
+        box-shadow: none !important;
+        margin-right: -250px;
+    }
+
+    .content-wrapper, .content-wrapper::before, .main-footer, .main-footer::before, .main-header, .main-header::before {
+        margin-right: 0;
+    }
+
+    .sidebar-open .main-sidebar, .sidebar-open .main-sidebar::before {
+        margin-right: 0;
+    }
+}
+
+.user-profile {
+    margin: auto;
+    width: 25em;
+    height: 11em;
+    background: #fff;
+    border-radius: .3em;
+}
+
+.user-profile  .username {
+    margin: auto;
+    margin-top: -4.40em;
+    margin-left: 5.80em;
+    color: #658585;
+    font-size: 1.53em;
+    font-family: "Coda", sans-serif;
+    font-weight: bold;
+}
+.user-profile  .bio {
+    margin: auto;
+    display: inline-block;
+    margin-left: 10.43em;
+    color: #e76043;
+    font-size: .87em;
+    font-family: "varela round", sans-serif;
+}
+.user-profile > .description {
+    margin: auto;
+    margin-top: 1.35em;
+    margin-right: 4.43em;
+    width: 14em;
+    color: #c0c5c5;
+    font-size: .87em;
+    font-family: "varela round", sans-serif;
+}
+.user-profile > img.avatar {
+    padding: .7em;
+    margin-left: .3em;
+    margin-top: .3em;
+    height: 6.23em;
+    width: 6.23em;
+    border-radius: 18em;
+}
