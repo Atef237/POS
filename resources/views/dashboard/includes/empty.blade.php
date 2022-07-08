@@ -16,6 +16,7 @@
 
        @include('dashboard.includes.footer')
        @include('dashboard.includes.footer_js')
+
     </div>
     </body>
 </html>

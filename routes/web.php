@@ -29,5 +29,12 @@ route::group(['namespace' => 'Dashboard','middleware'=>'auth:web'],function(){
 
     route::view('home','dashboard.dashboard')->name('home');
 
+    route::resource('users','UserController')->except(['show']);
+
+    route::resource('categories','CategoryController')->except(['show']);
+
+
+
+
 });
 

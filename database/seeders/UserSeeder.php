@@ -22,6 +22,11 @@ class UserSeeder extends Seeder
 //            'password' => bcrypt('12345'),
 //        ]);
 
-        User::factory(10)->create();
+       $users = User::factory(3)->create();  // create users
+
+       foreach ($users as $user){
+           $user->attachRole('super_admin');
+       } // add to user role super admin
+
     }
 }

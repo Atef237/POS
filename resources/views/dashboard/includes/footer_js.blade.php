@@ -34,3 +34,24 @@
 <script src="{{asset('assets/dashboard/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dashboard/dist/js/demo.js')}}"></script>
+
+
+<script>
+
+    // image preview
+    $(".image").change(function () {
+
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.image-preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+        }
+
+    });
+
+
+</script>
