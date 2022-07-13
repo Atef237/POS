@@ -35,6 +35,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dashboard/dist/js/demo.js')}}"></script>
 
+<script src="{{asset('assets/dashboard/plugins/ckeditor/ckeditor.js')}}"></script>
+
 
 <script>
 
@@ -53,5 +55,7 @@
 
     });
 
+
+    CKEDITOR.config.language = "ar";   // CKeditor language
 
 </script>

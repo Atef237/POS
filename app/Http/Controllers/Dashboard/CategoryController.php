@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\DAshboard;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:categories_read'])->only('index');
+        $this->middleware(['permission:categories_create'])->only('create');
+        $this->middleware(['permission:categories_update'])->only('edit');
+        $this->middleware(['permission:categories_delete'])->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
