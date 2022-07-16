@@ -35,6 +35,8 @@ route::group(['namespace' => 'Dashboard','middleware'=>'auth:web'],function(){
 
     route::resource('products','ProductController')->except(['show']);
 
+    route::resource('clients','ClientController')->except(['show']);
+
 
 
 });

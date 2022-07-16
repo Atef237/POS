@@ -127,7 +127,7 @@ class UserController extends Controller
 
         if($request->image){
 
-            if($user->image != 'default.png'){
+            if($user->image != 'client.png'){
                 storage::disk('public_uploads')->delete('/user_images/'. $user->image);
             }  //delete image old
 
@@ -158,7 +158,7 @@ class UserController extends Controller
 
 
        $user = User::find($request->id);
-       if($user->image != 'default.png'){
+       if($user->image != 'client.png'){
            storage::disk('public_uploads')->delete('/user_images/'. $user->image);
        }
        $user->delete();

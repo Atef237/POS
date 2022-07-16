@@ -94,7 +94,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <img src="{{asset('uploads/user_images/default.png')}}" style="width: 100px" class="image-preview img-thumbnail">
+                                        <img src="{{asset('uploads/user_images/client.png')}}" style="width: 100px" class="image-preview img-thumbnail">
 
                                     </div>
 

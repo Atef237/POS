@@ -32,8 +32,11 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $data['categories']= Category::all();
         $data['products'] = Product::when($request->search,function($query) use ($request){
            return $query->where('name','like','%'.$request->search.'%');
+        })->when($request->category_id,function($q)use($request){
+            return $q->where('category_id',$request->category_id);
         })->latest()->paginate(10);
 
       //  $data['products'] = Product::all();

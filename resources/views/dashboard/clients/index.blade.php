@@ -1,3 +1,4 @@
+
 @extends('dashboard.includes.empty')
 
 @section('content')
@@ -9,11 +10,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>الاقسام <small>{{$categories->total()}}</small></h1>
+                        <h1>العملاء <small>{{$clients->total()}}</small></h1>
 
 
-                        @if(auth()->user()->hasPermission('categories_create'))
-                            <a href="{{route('categories.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> اضافة</a>
+                        @if(auth()->user()->hasPermission('clients_create'))
+                            <a href="{{route('clients.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> اضافة</a>
                         @else
                             <a href="#" class="btn btn-primary btn-sm disabled"><i class="fa fa-plus"></i> اضافة</a>
                         @endif
@@ -22,34 +23,29 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية</a></li>
-                            <li class="breadcrumb-item active">الاقسام</li>
+                            <li class="breadcrumb-item active">العملاء</li>
                         </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        @if(count($categories) > 0)
+        @if(count($clients) > 0)
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">الاقسام</h3>
+                                    <h3 class="card-title">العملاء</h3>
 
 
 
-                                    <form action="{{route('categories.index')}}" method="get">
+                                    <form action="{{route('clients.index')}}" method="get">
                                         @csrf
 
                                         <div class="card-tools">
                                             <div class="input-group input-group-sm" style="width: 150px;">
                                                 <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{request()->search}}">
-
-
-
-
-
 
                                                 <div class="input-group-append">
                                                     <button type="submit" class="btn btn-default">
@@ -60,7 +56,6 @@
 
                                                 </div>
                                             </div>
-
                                         </div>
 
                                     </form>
@@ -74,30 +69,30 @@
                                         <tr>
                                             <th>#</th>
                                             <th>الاسم</th>
-                                            <th>عدد المنتجات</th>
-                                            <th>منتجات هذا القسم</th>
-
+                                            <th>العنوان</th>
+                                            <th>الهاتف</th>
+                                            <th>الصورة</th>
                                             <th>العمليات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($categories as $index=>$category)
+                                        @foreach($clients as $index=>$client)
                                             <tr>
                                                 <td>{{$index + 1}}</td>
-                                                <td>{{$category->name}}</td>
-                                                <td>{{$category->Products->count()}}</td>
-                                                <td><a href="{{route('products.index',['category_id' => $category->id])}}" class="btn btn-info btn-sm"> المنتجات</a> </td>
-
+                                                <td>{{$client->name}}</td>
+                                                <td>{{$client->address}}</td>
+                                                <td>{{implode(array_filter($client->phone))}}</td>
+                                                <td><img src="{{$client->image_path}}" style="width: 100px" class="img-thumbnail"></td>
                                                 <td>
 
-                                                    @if(auth()->user()->hasPermission('categories_update'))
-                                                        <a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> تعديل </a>
+                                                    @if(auth()->user()->hasPermission('clients_update'))
+                                                        <a href="{{route('clients.edit',$client->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> تعديل </a>
                                                     @else
                                                         <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> تعديل </a>
 
                                                     @endif
 
-                                                    @if(auth()->user()->hasPermission('categories_delete'))
+                                                    @if(auth()->user()->hasPermission('clients_delete'))
 
 
 
@@ -112,21 +107,21 @@
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">حذف</h5>
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form action="{{route('categories.destroy','delete')}}" method="post" style="display:inline">
+                                                                        <form action="{{route('clients.destroy','delete')}}" method="post" style="display:inline">
                                                                             @csrf
                                                                             @method('DELETE')
 
-                                                                            <input type="hidden" name="id" value="{{$category->id}}">
+                                                                            <input type="hidden" name="id" value="{{$client->id}}">
 
 
 
-                                                                            هل تريد حذف {{$category->name}}
+                                                                            هل تريد حذف {{$client->first_name . ' '. $client->last_name}}
 
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -150,7 +145,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                {{$categories->appends(request()->query())->links()}}    <!-- to append request field search to other pages  -->
+                                {{$clients->appends(request()->query())->links()}}    <!-- to append request field search to other pages  -->
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -166,7 +161,6 @@
 
 
     </div>
-
 
 
 @endsection
